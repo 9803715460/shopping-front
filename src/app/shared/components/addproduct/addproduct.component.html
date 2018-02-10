@@ -1,0 +1,41 @@
+<form class="form-group" [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
+
+  category:
+  <input class="form-control" formControlName="category" placeholder="Enter Name">
+
+  name:
+  <input class="form-control" formControlName="name" placeholder="Enter Name">
+
+  brand:
+  <input class="form-control" formControlName="brand" placeholder="Enter Name">
+
+  unitPrice:
+  <input class="form-control" formControlName="unitPrice" placeholder="Enter Name">
+
+  <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>category</th>
+                <th>name</th>
+                <th>brand</th>
+                <th>unitPrice</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of item " class="row col-md-12" class="success">
+                <td>{{item.category}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.brand}}</td>
+                <td>{{item.unitPrice}}</td>
+                <td>
+                    <button type="button" class="btn btn-default btn-sm" (click)="editUser(item)">
+                        <span class="glyphicon glyphicon-pencil"></span> Edit
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
