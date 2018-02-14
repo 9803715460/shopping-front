@@ -1,16 +1,30 @@
 <form class="form-group" [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
 
   category:
-  <input class="form-control" formControlName="category" placeholder="Enter Name">
+  <select class="form-control" formControlName="category">
+  <option *ngFor="let pf of category" [ngValue]="pf.name">
+    {{ pf.name }}
+  </option>
+  </select>  
+  brand:
+  <select class="form-control" formControlName="category">
+  <option *ngFor="let pf of brand" [ngValue]="pf.name">
+    {{ pf.name }}
+  </option>
+  </select>  
 
   name:
   <input class="form-control" formControlName="name" placeholder="Enter Name">
 
-  brand:
-  <input class="form-control" formControlName="brand" placeholder="Enter Name">
+  
 
   unitPrice:
   <input class="form-control" formControlName="unitPrice" placeholder="Enter Name">
+  
+  image:
+    <input  class="form-control" type="file" formControlName="productImage" (change)="onFileChange($event)" #fileInput>
+    <button type="button" class="btn btn-sm btn-default" (click)="clearFile()">clear file</button>
+  
 
   <button class="btn btn-primary" type="submit">Submit</button>
 </form>
@@ -31,8 +45,8 @@
                 <td>{{item.brand}}</td>
                 <td>{{item.unitPrice}}</td>
                 <td>
-                    <button type="button" class="btn btn-default btn-sm" (click)="editUser(item)">
-                        <span class="glyphicon glyphicon-pencil"></span> Edit
+                    <button type="button" class="btn btn-default btn-sm" (click)="addtocart(item)">
+                        <span class="glyphicon glyphicon-pencil"></span> Add to cart
                     </button>
                 </td>
             </tr>
